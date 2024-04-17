@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [X] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [X] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [X] Commit: `Create Notification service struct skeleton.`
+    -   [X] Commit: `Implement subscribe function in Notification service.`
+    -   [X] Commit: `Implement subscribe function in Notification controller.`
+    -   [X] Commit: `Implement unsubscribe function in Notification service.`
+    -   [X] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [X] Commit: `Implement receive_notification function in Notification service.`
+    -   [X] Commit: `Implement receive function in Notification controller.`
+    -   [X] Commit: `Implement list_messages function in Notification service.`
+    -   [X] Commit: `Implement list function in Notification controller.`
+    -   [X] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -95,3 +95,15 @@ This is the place for you to write reflections:
 = Dalam tutorial ini, kita menggunakan pustaka eksternal lazy_static untuk mendefinisikan Vec dan DashMap sebagai variabel "static". Berbeda dengan Java, di mana kita dapat mengubah isi variabel statis melalui fungsi statis, Rust tidak mengizinkan hal ini karena aturan kepemilikan dan peminjaman yang ketat, yang memastikan keselamatan memori dan mencegah perlombaan data. Dalam Rust, variabel statis tidak dapat diubah secara default untuk menegakkan keselamatan benang dan mencegah mutasi yang tidak disengaja di antara benang. Dengan menggunakan lazy_static, kita dapat mencapai perilaku serupa dengan menginisialisasi variabel statis secara malas, tetapi setelah diinisialisasi, isinya tetap tidak dapat diubah kecuali disinkronkan secara eksplisit menggunakan pola mutabilitas interior seperti Mutex atau RwLock. Pendekatan ini sesuai dengan penekanan Rust pada keselamatan dan konkurensi.
 
 #### Reflection Subscriber-2
+
+- Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you didn’t do so. If yes, explain things that you’ve learned from those other parts of code.
+
+= Menurut saya, contoh-contoh seperti yang terdapat di src/lib.rs menyediakan informasi yang diperlukan di mana elemen-elemen untuk aplikasi didefinisikan. Sebagai contoh, dalam tutorial ini, src/lib.rs mengatur manajemen kesalahan dengan mengatur Error sebagai kesalahan default untuk tipe Result (sebagai penanganan kesalahan), dan juga terdapat ErrorResponse yang berisi tanggapan kesalahan beserta kode status dan pesan.
+
+- Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than 1 instance of Main app, will it still be easy enough to add to the system?
+
+= Dalam tutorial ini, langkah-langkah untuk menambahkan seorang pelanggan dilakukan dengan memasukkan pelanggan baru ke dalam daftar pengamat. Jadi, ketika seorang pelanggan baru mendaftar, ia akan dimasukkan ke dalam daftar pengamat. Jika terjadi situasi seperti yang disebutkan dalam pertanyaan, di mana sebuah instansi dari aplikasi Utama dibuat, tidak akan ada masalah karena hanya memerlukan penyesuaian proses pendaftaran pelanggan ke API yang sesuai.
+
+- Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+= Menurut saya, pengujian dengan kumpulan Postman adalah proses yang sederhana dan memberikan manfaat. Kita bisa menyesuaikan data yang dikirim saat permintaan HTTP dan memeriksa apakah respons yang seharusnya dihasilkan oleh program kita adalah benar atau tidak. Ini sangat berguna karena kita dapat menguji API tertentu tanpa harus menggunakan data nyata dari aplikasi atau program yang relevan.
